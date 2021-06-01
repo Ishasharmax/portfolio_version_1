@@ -1,0 +1,49 @@
+:root {
+    --primary: #d1fefc;
+    --secondary: #ffe1e1;
+    --accent: #ffeb37;
+}
+
+.artist-card {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1rem auto;
+    max-width: 30rem;
+    margin: auto;
+    position: relative;
+}
+
+.artist-card__img {
+    max-width: 60%;
+    margin: auto;
+    grid-column: 1/-1;
+    grid-row: 1/3;
+}
+
+@supports (clip-path: circle(25%)) {
+    .artist-card {
+        clip-path: circle(0%);
+        animation: circle-grow 2000ms 450ms forwards;
+    }
+
+    .artist-card:hover .artist-card__img {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%);
+    }
+
+    .artist-card__img {
+        clip-path: polygon(38.11% 46.5%, 50% 0%,95% 50%, 64.09% 90.44%, 3.7% 63.94%);
+        transition: clip-path 400ms ease-in-out;
+    }
+}
+
+@keyframes circle-grow {
+    to {
+        clip-path: circle(100%);
+    }
+}
+
+@keyframes heading-in {
+    to {
+        clip-path: inset(0% 0%);
+    }
+}
